@@ -1,0 +1,28 @@
+<div class="widecontent" role="main">
+  <div class="container">
+    <mat-form-field appearance="fill" style="width: 45%;">
+      <mat-label>JSON here</mat-label>
+      <textarea matInput [value]="inputValue" (input)="onInput($event.target.value)"
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="20"
+                cdkAutosizeMaxRows="50">
+    </textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 45%;">
+      <mat-label>Prettified JSON</mat-label>
+      <textarea matInput
+                readonly
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="20"
+                cdkAutosizeMaxRows="50">
+            {{cleaned}}
+    </textarea>
+    </mat-form-field>
+
+  </div>
+
+  <div class="text-center col-md-12 mt-3 mb-2" class="center">
+    <button mat-raised-button (click)="cleanJSON()">Prettify JSON</button>
+  </div>
+</div>
