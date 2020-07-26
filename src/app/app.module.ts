@@ -14,6 +14,9 @@ import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { FindIpComponent } from './find-ip/find-ip.component';
 import { JsonFormatterComponent } from './json-formatter/json-formatter.component';
+import { GpaCalculatorComponent } from './gpa-calculator/gpa-calculator.component';
+import { GpaCalculatorEditComponent } from './gpa-calculator/gpa-calculator-edit/gpa-calculator-edit.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -22,6 +25,8 @@ import { JsonFormatterComponent } from './json-formatter/json-formatter.componen
     MenuBarComponent,
     FindIpComponent,
     JsonFormatterComponent,
+    GpaCalculatorComponent,
+    GpaCalculatorEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,8 @@ import { JsonFormatterComponent } from './json-formatter/json-formatter.componen
     MatInputModule,
     MatButtonModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

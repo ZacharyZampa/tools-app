@@ -1,0 +1,12 @@
+.widecontent {
+  display: flex;
+  margin-top: 82px;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
