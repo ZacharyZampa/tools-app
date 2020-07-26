@@ -1,17 +1,27 @@
 <div class="container">
-  <mat-form-field appearance="outline">
-    <mat-label>Course Name</mat-label>
-    <input matInput>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="outline">
-    <mat-label>Grade</mat-label>
-    <mat-select>
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Credits</mat-label>
-    <input type="number" min="0" matInput>
-  </mat-form-field>
+  <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Course Name</mat-label>
+      <input formControlName="name" matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+      <mat-label>Grade</mat-label>
+      <mat-select formControlName="grade">
+        <mat-option value="option"
+          *ngFor="let choice of gradeChoices | keyvalue">
+          {{ choice.key }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Credits</mat-label>
+      <input type="number" min="0" formControlName="credits" matInput>
+    </mat-form-field>
+    <button mat-flat-button color="primary"
+            type="submit" [disabled]="!courseForm.valid">
+      Submit
+    </button>
+    <button type="button" mat-flat-button color="basic" (click)="onCancel()">Cancel</button>
+  </form>
 </div>

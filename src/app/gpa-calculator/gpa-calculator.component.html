@@ -1,11 +1,24 @@
+<div class="container" role="main">
+
+</div>
 <div class="widecontent" role="main">
   <div class="container">
     <div>
       <h2>View Courses</h2>
+      <mat-selection-list>
+        <mat-list-option *ngFor="let course of courses">
+          {{ course.name }} | {{ course.grade }} | {{ course.credits }}
+        </mat-list-option>
+      </mat-selection-list>
+      <button mat-flat-button color="primary"
+              (click)="editClicked = true" *ngIf="!editClicked">
+        Add a Course
+      </button>
     </div>
-    <div>
+    <div *ngIf="editClicked">
       <h2>Add / Edit Course</h2>
-      <app-gpa-calculator-edit></app-gpa-calculator-edit>
+      <app-gpa-calculator-edit [haveEditForm]="editClicked" (haveFormStatus)="this.editClicked= $event">
+      </app-gpa-calculator-edit>
     </div>
 
   </div>

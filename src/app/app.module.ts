@@ -17,6 +17,7 @@ import { JsonFormatterComponent } from './json-formatter/json-formatter.componen
 import { GpaCalculatorComponent } from './gpa-calculator/gpa-calculator.component';
 import { GpaCalculatorEditComponent } from './gpa-calculator/gpa-calculator-edit/gpa-calculator-edit.component';
 import {MatSelectModule} from "@angular/material/select";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatSelectModule} from "@angular/material/select";
     MatButtonModule,
     HttpClientModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
