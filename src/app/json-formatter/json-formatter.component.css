@@ -11,3 +11,15 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+
+.alert-danger {
+  background-color: #f44336; /* Red */
+}
+
+.alert{
+  padding: 20px;
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+}

@@ -9,6 +9,7 @@ import { Router} from '@angular/router';
 export class JsonFormatterComponent {
   inputValue: string = "";
   cleaned: string;
+  isValid = true;
 
   constructor(private _router: Router,
               private changeDetectorRef: ChangeDetectorRef) {  }
@@ -19,7 +20,15 @@ export class JsonFormatterComponent {
   }
 
   cleanJSON() {
-    let json = JSON.parse(this.inputValue);
+    let json;
+    try {
+      json = JSON.parse(this.inputValue);
+      this.isValid = true;
+    } catch (error) {
+      console.log("Cannot parse JSON");
+      this.isValid = false;
+    }
+
 
     this.changeDetectorRef.detectChanges();
 
