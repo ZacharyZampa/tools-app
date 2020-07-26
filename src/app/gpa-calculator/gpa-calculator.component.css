@@ -10,3 +10,9 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+.courseHolder {
+  padding-bottom: 15px;
+}
+
+

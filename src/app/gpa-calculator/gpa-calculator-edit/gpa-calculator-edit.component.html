@@ -8,7 +8,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Grade</mat-label>
       <mat-select formControlName="grade">
-        <mat-option value="option"
+        <mat-option value="{{ choice.value }}"
           *ngFor="let choice of gradeChoices | keyvalue">
           {{ choice.key }}
         </mat-option>
