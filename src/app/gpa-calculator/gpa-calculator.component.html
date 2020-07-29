@@ -2,6 +2,8 @@
   <div class="container">
       <div class="column-left">
         <h2>View Courses</h2>
+        <p *ngIf="gpa != -1 && courses.length > 0">Cumulative GPA = {{ gpa }}</p>
+        <p *ngIf="gpa == -1 || courses.length === 0">No GPA Yet: Add some courses</p>
         <div>
           <div class="coursesDiv">
             <div class="courseHolder" *ngFor="let course of courses; let i = index">
