@@ -1,42 +1,44 @@
-<div class="container" role="main">
-
-</div>
 <div class="widecontent" role="main">
   <div class="container">
-    <div>
-      <h2>View Courses</h2>
-      <div class="courseHolder" *ngFor="let course of courses; let i = index">
-        <mat-card>
-          <mat-card-header>
-            {{ course.name }}
-          </mat-card-header>
-          <mat-card-content>
-            Grade: {{ course.gradeLetter }}
-          </mat-card-content>
-          <mat-card-content>
-            Credits:  {{ course.credits }}
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button (click)=onEdit(i)>EDIT</button>
-            <button mat-button (click)="onDelete(i)">DELETE</button>
-          </mat-card-actions>
-        </mat-card>
+      <div class="column-left">
+        <h2>View Courses</h2>
+        <div>
+          <div class="coursesDiv">
+            <div class="courseHolder" *ngFor="let course of courses; let i = index">
+              <mat-card>
+                <mat-card-header>
+                  {{ course.name }}
+                </mat-card-header>
+                <mat-card-content>
+                  Grade: {{ course.gradeLetter }}
+                </mat-card-content>
+                <mat-card-content>
+                  Credits:  {{ course.credits }}
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button (click)=onEdit(i)>EDIT</button>
+                  <button mat-button (click)="onDelete(i)">DELETE</button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </div>
+          <button mat-flat-button color="primary"
+                  (click)="editClicked = true" *ngIf="!editClicked">
+            Add a Course
+          </button>
+        </div>
       </div>
-      <button mat-flat-button color="primary"
-              (click)="editClicked = true" *ngIf="!editClicked">
-        Add a Course
-      </button>
-    </div>
-    <div *ngIf="editClicked">
-      <h2>Add / Edit Course</h2>
-      <app-gpa-calculator-edit
-        [haveEditForm]="editClicked"
-        [course]="courses[editCourseIndex]"
-        [editIndex]="editCourseIndex"
-        (haveFormStatus)="this.editClicked= $event"
-        (courseSubmitted)="addCourse($event)">
-      </app-gpa-calculator-edit>
-    </div>
-
+      <div class="column-right">
+        <div *ngIf="editClicked">
+          <h2>Add / Edit Course</h2>
+          <app-gpa-calculator-edit
+            [haveEditForm]="editClicked"
+            [course]="courses[editCourseIndex]"
+            [editIndex]="editCourseIndex"
+            (haveFormStatus)="this.editClicked= $event"
+            (courseSubmitted)="addCourse($event)">
+          </app-gpa-calculator-edit>
+        </div>
+      </div>
   </div>
 </div>

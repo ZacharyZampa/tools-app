@@ -15,6 +15,9 @@ export class GpaCalculatorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    for (let i = 0; i < 20; i++) {
+      this.courses.push(new Course("name", 4, 3));
+    }
   }
 
   onEdit(courseIndex: number) {

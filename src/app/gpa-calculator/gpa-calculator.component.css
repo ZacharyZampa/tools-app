@@ -7,12 +7,25 @@
 .container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-around;
 }
 
 .courseHolder {
   padding-bottom: 15px;
+  padding-right: 15px;
 }
 
+.column-left {
+  min-width: 50%;
+}
+
+.column-right {
+  min-width: 25%;
+  margin-right: 5%;
+}
+
+.coursesDiv {
+  display: flex;
+  flex-wrap: wrap;
+}
 
