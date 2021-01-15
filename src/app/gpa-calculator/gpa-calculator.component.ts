@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Course} from "./Course";
+import { Course } from './Course';
+import {CourseService} from './course.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-gpa-calculator',
@@ -9,48 +11,51 @@ import {Course} from "./Course";
 export class GpaCalculatorComponent implements OnInit {
   editClicked = false;
   courses: Course[] = [];
+  private courseSub: Subscription;
   gpa = -1;
 
   editCourseIndex = -1;
 
-  constructor() { }
+  constructor(public courseService: CourseService) { }
 
   ngOnInit(): void {
-    for (let i = 0; i < 20; i++) {
-      this.courses.push(new Course("name", 4, 3));
-    }
+    this.courseService.getCourseList();
+    this.courseSub = this.courseService.getCourseUpdateListener()
+      .subscribe((courseList: Course[]) => {
+        this.courses = courseList;
+      });
     this.calculateGPA();
   }
 
-  onEdit(courseIndex: number) {
+  onEdit(courseIndex: number): void {
     this.editClicked = true;
     this.editCourseIndex = courseIndex;
   }
 
-  onDelete(courseIndex: number) {
-    this.courses.splice(courseIndex,1);
+  onDelete(courseIndex: number): void {
+    this.courses.splice(courseIndex, 1);
 
     this.editClicked = false;
     this.editCourseIndex = -1;
     this.calculateGPA();
   }
 
-  addCourse(courseInfo: { "course": Course, "index" : number }) {
-    if (courseInfo["index"] !== -1) {
-      this.courses.splice(this.editCourseIndex,1, courseInfo["course"]);
+  addCourse(courseInfo: { 'course': Course, 'index': number }): void {
+    if (courseInfo.index !== -1) {
+      this.courses.splice(this.editCourseIndex, 1, courseInfo.course);
       this.editCourseIndex = -1;
       this.calculateGPA();
       return;
     }
 
-    this.courses.push(courseInfo["course"]);
+    this.courses.push(courseInfo.course);
     this.calculateGPA();
   }
 
-  calculateGPA() {
+  calculateGPA(): void {
     let creditTotal = 0;
-    this.gpa = 0
-    for (let course of this.courses) {
+    this.gpa = 0;
+    for (const course of this.courses) {
       this.gpa += course.grade * course.credits;
       creditTotal += course.credits;
     }
