@@ -54,7 +54,7 @@ export class GpaCalculatorEditComponent implements OnInit {
 
   onSubmit() {
     this.course = new Course(
-      "1",  // make this a real id later
+      null,
       this.courseForm.value.name,
       this.courseForm.value.grade,
       this.courseForm.value.credits

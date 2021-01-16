@@ -7,7 +7,7 @@
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .courseHolder {
@@ -16,16 +16,28 @@
 }
 
 .column-left {
-  min-width: 50%;
+  min-width: 0%;
+  max-width: 100%;
+  margin-left: 5%;
 }
 
 .column-right {
-  min-width: 25%;
+  min-width: 0%;
+  max-width: 100%;
   margin-right: 5%;
 }
 
 .coursesDiv {
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0%;
+  margin: 5rem auto;
+  display: grid;
+  gap: 2rem;
 }
 
+@media screen and (min-width: 768px) {
+  .coursesDiv {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

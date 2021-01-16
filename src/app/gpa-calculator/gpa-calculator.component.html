@@ -4,6 +4,10 @@
         <h2>View Courses</h2>
         <p *ngIf="gpa != -1 && courses.length > 0">Cumulative GPA = {{ gpa }}</p>
         <p *ngIf="gpa == -1 || courses.length === 0">No GPA Yet: Add some courses</p>
+        <button mat-flat-button color="primary"
+                  (click)="editClicked = true" *ngIf="!editClicked">
+            Add a Course
+          </button>
         <div>
           <div class="coursesDiv">
             <div class="courseHolder" *ngFor="let course of courses; let i = index">
@@ -24,10 +28,6 @@
               </mat-card>
             </div>
           </div>
-          <button mat-flat-button color="primary"
-                  (click)="editClicked = true" *ngIf="!editClicked">
-            Add a Course
-          </button>
         </div>
       </div>
       <div class="column-right">

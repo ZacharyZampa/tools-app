@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Course } from './Course';
 import {CourseService} from './course.service';
 import {Subscription} from 'rxjs';
@@ -8,7 +8,7 @@ import {Subscription} from 'rxjs';
   templateUrl: './gpa-calculator.component.html',
   styleUrls: ['./gpa-calculator.component.css']
 })
-export class GpaCalculatorComponent implements OnInit {
+export class GpaCalculatorComponent implements OnInit, OnDestroy {
   editClicked = false;
   courses: Course[] = [];
   private courseSub: Subscription;
@@ -18,11 +18,16 @@ export class GpaCalculatorComponent implements OnInit {
 
   constructor(public courseService: CourseService) { }
 
+  ngOnDestroy(): void {
+    this.courseSub.unsubscribe();
+  }
+
   ngOnInit(): void {
-    this.courseService.getCourseList();
-    this.courseSub = this.courseService.getCourseUpdateListener()
-      .subscribe((courseList: Course[]) => {
-        this.courses = courseList;
+    this.courses = this.courseService.getCourseList();
+    console.log('init');
+    this.courseSub = this.courseService.coursesUpdated
+      .subscribe((courses: Course[]) => {
+        this.courses = courses;
       });
     this.calculateGPA();
   }
