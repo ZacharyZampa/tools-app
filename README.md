@@ -1,5 +1,13 @@
 # ToolsApp
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cd45599f-0dd0-48cc-8bdf-c99897b6da03/deploy-status)](https://app.netlify.com/sites/zampas-tool-site/deploys)
+
+
+## What I made this for
+
+I wanted to learn some Angular development as it is a very popular framework and incase I ever need to work on the frontend at a job.
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
 
 ## Development server
