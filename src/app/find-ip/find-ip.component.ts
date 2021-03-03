@@ -20,6 +20,8 @@ export class FindIpComponent implements OnInit {
     this.dataService.getIpAddress().subscribe((data: any) => {
       if (data instanceof String) {
         this.ipData = data;
+      } else if (!data) {
+        this.ipData = "AdBlock is most likely stopping the IP from showing up"
       } else {
         this.ipData = data.ip;
       }
