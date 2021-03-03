@@ -2,6 +2,9 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/cd45599f-0dd0-48cc-8bdf-c99897b6da03/deploy-status)](https://app.netlify.com/sites/zampas-tool-site/deploys)
 
+## Visit the site here
+
+https://zampas-tool-site.netlify.app/
 
 ## What I made this for
 
